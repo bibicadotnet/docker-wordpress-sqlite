@@ -6,7 +6,9 @@ LABEL Maintainer="Tim de Pater <code@trafex.nl>" \
 RUN apk --no-cache add \
   php83 \
   php83-fpm \
-  php83-mysqli \
+  php83-pdo \
+  php83-pdo_sqlite \
+  php83-sqlite3 \
   php83-json \
   php83-openssl \
   php83-curl \
@@ -28,11 +30,11 @@ RUN apk --no-cache add \
   php83-opcache \
   php83-iconv \
   php83-pecl-imagick \
-  php83-session \
-  php83-tokenizer \
   nginx \
   supervisor \
+  sqlite \
   curl \
+  unzip \
   bash \
   less
 
@@ -52,8 +54,8 @@ WORKDIR /var/www/wp-content
 RUN chown -R nobody.nobody /var/www
 
 # WordPress
-ENV WORDPRESS_VERSION 6.5.5
-ENV WORDPRESS_SHA1 8d6a705f1b59367ec584a5fd4ab84aa53dd01c85
+ENV WORDPRESS_VERSION=6.6.1
+ENV WORDPRESS_SHA1=cd5544c85824e3cd8105018c63ccdba31883d881
 
 RUN mkdir -p /usr/src
 
@@ -70,6 +72,7 @@ RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh
 
 # WP config
 COPY wp-config.php /usr/src/wordpress
+RUN wget --no-check-certificate https://raw.githubusercontent.com/aaemnnosttv/wp-sqlite-db/master/src/db.php -O /usr/src/wordpress/wp-content/db.php
 RUN chown nobody.nobody /usr/src/wordpress/wp-config.php && chmod 640 /usr/src/wordpress/wp-config.php
 
 # Link wp-secrets to location on wp-content
