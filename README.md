@@ -1,6 +1,22 @@
 
 # WordPress Docker Container
 
+### Tạo Docker custom
+```
+git clone https://github.com/bibicadotnet/docker-wordpress-sqlite
+cd docker-wordpress-sqlite
+docker build --tag bibica/nginx-php-sqlite-wordpress .
+```
+### Upload lên hub.docker.com
+```
+docker login
+```
+Điền user và pass
+```
+docker image push bibica/nginx-php-sqlite-wordpress
+```
+
+
 Lightweight WordPress container with Nginx 1.26 & PHP-FPM 8.3 based on Alpine Linux.
 
 _WordPress version currently installed:_ **6.5.5**
