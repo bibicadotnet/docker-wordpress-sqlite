@@ -15,7 +15,10 @@ docker login
 ```
 docker image push bibica/nginx-php-sqlite-wordpress
 ```
--> đường dẫn docker: bibica/nginx-php-sqlite-wordpress
+Xong xuôi sẽ có đường dẫn docker như sau
+```
+bibica/nginx-php-sqlite-wordpress
+```
 
 Lightweight WordPress container with Nginx 1.26 & PHP-FPM 8.3 based on Alpine Linux.
 
