@@ -6,4 +6,4 @@ services:
     ports:
       - 8123:80
     volumes:
-      - ./data::/var/www/wp-content
+      - ./data:/var/www/wp-content
